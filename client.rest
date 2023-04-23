@@ -1,4 +1,5 @@
-@host = localhost:3000
+// @host = localhost:3000
+@host = mongodb-contacts.onrender.com
 @objectid_1 = 6444a1a14e023dbc80cd19cc
 @objectid_2 = 6444a1a14e023dbc80cd19cd
 @objectid_3 = 6444a1a14e023dbc80cd19ce
