@@ -6,7 +6,8 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use('/', require('./routes'));
+app.use('/', require('./routes/index'));
+app.use('/user', require('./routes/user'));
 
 mongodb.initDb((err, mongodb) => {
     if (err) {
