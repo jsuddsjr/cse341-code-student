@@ -18,8 +18,7 @@ const getAll = async (req, res, next) => {
 const getSingle = async (req, res, next) => {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb
-        .getDb()
-        .db()
+        .getDb("cse341-ls02")
         .collection('user')
         .find({ _id: userId });
     result.toArray().then((lists) => {
