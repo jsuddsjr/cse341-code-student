@@ -8,6 +8,7 @@ app.use(express.json());
 
 app.use('/', require('./routes/index'));
 app.use('/user', require('./routes/user'));
+app.use('/contacts', require('./routes/contacts'));
 
 mongodb.initDb((err, mongodb) => {
     if (err) {

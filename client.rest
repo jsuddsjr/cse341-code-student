@@ -1,7 +1,13 @@
 @host = localhost:3000
-@objectid = 644490fa4e023dbc80cd19ca
+@objectid_1 = 6444a1a14e023dbc80cd19cc
+@objectid_2 = 6444a1a14e023dbc80cd19cd
+@objectid_3 = 6444a1a14e023dbc80cd19ce
 
 ###
-GET http://{{host}}/user
+GET http://{{host}}/contacts
 ###
-GET http://{{host}}/user/{{objectid}}
+GET http://{{host}}/contacts/{{objectid_1}}
+###
+GET http://{{host}}/contacts/{{objectid_2}}
+###
+GET http://{{host}}/contacts/{{objectid_3}}
