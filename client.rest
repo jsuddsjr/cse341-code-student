@@ -1,0 +1,7 @@
+@host = localhost:3000
+@objectid = 644490fa4e023dbc80cd19ca
+
+###
+GET http://{{host}}/user
+###
+GET http://{{host}}/user/{{objectid}}
