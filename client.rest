@@ -1,0 +1,4 @@
+@host = 'https://localhost:8080'
+
+###
+GET {{host}}/theme
