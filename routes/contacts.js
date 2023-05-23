@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
+const contactsController = require('../controllers/contacts.js');
 
-const contactsController = require('../controllers/contacts');
+// eslint-disable-next-line new-cap
+const router = express.Router();
 
 router.get('/', contactsController.getAll);
 

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "^16.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set DEBUG=express:* & nodemon server.js",
@@ -29,6 +33,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^1.18.4",
     "prettier": "^2.5.1",
-    "swagger-autogen": "^2.19.0"
+    "swagger-autogen": "^2.19.0",
+    "xo": "^0.54.2"
+  },
+  "xo": {
+    "rules": {
+      "unicorn/prefer-module": "off"
+    }
   }
 }

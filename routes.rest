@@ -1,19 +1,18 @@
-// LOCALHOST
-host = localhost:8080
+@host = http://localhost:8080
 
 ### Get all contacts
 # @name getContacts
-GET http://localhost:8080/contacts
+GET {{host}}/contacts
 
-@contactId= {{getContacts.response.body.$[0]._id}}}
+@contactId= {{getContacts.response.body.$[0]._id}}
 
 ### Get contact by id
-GET http://localhost:8080/contacts/{{contactId}}
+GET {{host}}/contacts/{{contactId}}
 
 
 ### Create contact
 # @name createContact
-POST http://localhost:8080/contacts HTTP/1.1
+POST {{host}}/contacts HTTP/1.1
 content-type: application/json
 
 {
@@ -28,7 +27,7 @@ content-type: application/json
 @createdContactId = {{createContact.response.body._id}}
 
 ### PUT contact
-PUT http://localhost:8080/contacts/6220bcb39cd507e920c75a0b HTTP/1.1
+PUT {{host}}/contacts/6220bcb39cd507e920c75a0b HTTP/1.1
 content-type: application/json
 
 {
@@ -39,7 +38,7 @@ content-type: application/json
     "birthday":"12/12/20"
 }
 ### DELETE contact
-DELETE http://localhost:8080/contacts/6220b775099269ff7b31ceab HTTP/1.1
+DELETE {{host}}/contacts/6220b775099269ff7b31ceab HTTP/1.1
 
 // PRODUCTION Deploy
 ### Get all contacts
