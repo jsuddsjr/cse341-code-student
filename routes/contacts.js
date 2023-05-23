@@ -1,17 +1,22 @@
 const express = require('express');
-const contactsController = require('../controllers/contacts.js');
+const ctrl = require('../controllers/contacts.js');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-router.get('/', contactsController.getAll);
+router.use('/', (_, response, next) => {
+	response.set('Allow', 'GET, POST, PUT, DELETE');
+	next();
+});
 
-router.get('/:id', contactsController.getSingle);
+router.get('/', ctrl.getAll);
 
-router.post('/', contactsController.createContact);
+router.get('/:id', ctrl.checkObjectId(), ctrl.getSingle);
 
-router.put('/:id', contactsController.updateContact);
+router.post('/', ctrl.createContact);
 
-router.delete('/:id', contactsController.deleteContact);
+router.put('/:id', ctrl.checkObjectId(), ctrl.updateContact);
+
+router.delete('/:id', ctrl.checkObjectId(), ctrl.deleteContact);
 
 module.exports = router;

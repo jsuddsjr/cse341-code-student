@@ -16,7 +16,7 @@ const contactSchema = new mongoose.Schema({
 		type: String, validate: {
 			validator: value => isDate(value, {
 				format: 'MM/DD/YY',
-			}), message: 'Invalid date',
+			}), message: 'Not in required format MM/DD/YY.',
 		},
 	},
 });

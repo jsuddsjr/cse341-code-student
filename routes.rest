@@ -12,7 +12,7 @@ GET {{host}}/contacts/{{contactId}}
 
 ### Create contact
 # @name createContact
-POST {{host}}/contacts HTTP/1.1
+POST {{host}}/contacts
 content-type: application/json
 
 {
@@ -20,14 +20,14 @@ content-type: application/json
     "lastName":"Weaver",
     "email":"aWeaver@test.com",
     "favoriteColor":"Brown",
-    "birthday":"06/19/2000"
+    "birthday":"06/19/00"
 }
 
 ####
 @createdContactId = {{createContact.response.body._id}}
 
 ### PUT contact
-PUT {{host}}/contacts/6220bcb39cd507e920c75a0b HTTP/1.1
+PUT {{host}}/contacts/{{contactId}}
 content-type: application/json
 
 {
@@ -37,43 +37,16 @@ content-type: application/json
     "favoriteColor":"Green",
     "birthday":"12/12/20"
 }
-### DELETE contact
-DELETE {{host}}/contacts/6220b775099269ff7b31ceab HTTP/1.1
-
-// PRODUCTION Deploy
-### Get all contacts
-GET https://cse341-instructor.herokuapp.com/contacts
-
-
-### Get contact by id
-GET https://cse341-instructor.herokuapp.com/contacts/622023f642f9ab4cd6e060b3
-
-
-### Create contact
-POST https://cse341-instructor.herokuapp.com/contacts HTTP/1.1
-content-type: application/json
-
-{
-    "firstName":"Ashley",
-    "lastName":"Weaver",
-    "email":"aWeaver@test.com",
-    "favoriteColor":"Brown",
-    "birthday":"06/19/2000"
-}
-
-
-### PUT contact
-PUT https://cse341-instructor.herokuapp.com/contacts/6220bcb39cd507e920c75a0b HTTP/1.1
-content-type: application/json
-
-{
-    "firstName":"Sarah",
-    "lastName":"Birch",
-    "email":"sarahB@gmail.com",
-    "favoriteColor":"Yellow",
-    "birthday":"06/12/20"
-}
-
 
 ### DELETE contact
-DELETE https://cse341-instructor.herokuapp.com/contacts/6220e34083149913680f9a64 HTTP/1.1
+DELETE {{host}}/contacts/{{contactId}}
+
+### Create with bad fields.
+PUT {{host}}/contacts/{{contactId}}
+Content-Type: application/json
+
+{
+    "lastName": "",
+    "email": "bad@addy",
+    "birthday": "12/25/1990"
+}

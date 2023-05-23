@@ -18,50 +18,50 @@
         "responses": {}
       }
     },
-    "/contacts/": {
+    "/": {
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/contacts/": {
+      "get": {
+        "description": "Get all the records.",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "The contacts.",
+            "schema": {
+              "$ref": "#/definitions/ContactArray"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a new contact.",
         "parameters": [
           {
-            "name": "body",
+            "name": "Contact",
             "in": "body",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Contact"
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "The contact.",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "204": {
+            "description": "No Content"
           },
           "500": {
             "description": "Internal Server Error"
@@ -71,10 +71,7 @@
     },
     "/contacts/{id}": {
       "get": {
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "description": "Get a contact by id.",
         "parameters": [
           {
             "name": "id",
@@ -85,12 +82,18 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "The contact.",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a contact by id.",
         "parameters": [
           {
             "name": "id",
@@ -99,31 +102,21 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "Contact",
             "in": "body",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Contact"
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "The contact.",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
           "204": {
             "description": "No Content"
           },
@@ -133,7 +126,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete a contact by id.",
         "parameters": [
           {
             "name": "id",
@@ -143,13 +136,54 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "The contact.",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
+      }
+    }
+  },
+  "definitions": {
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "example": "John"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "john.doe@example.com"
+        },
+        "favoriteColor": {
+          "type": "string",
+          "example": "blue"
+        },
+        "birthday": {
+          "type": "string",
+          "example": "12/25/90"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "email"
+      ]
+    },
+    "ContactArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Contact"
       }
     }
   }

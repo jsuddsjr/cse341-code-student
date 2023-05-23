@@ -7,6 +7,16 @@ const doc = {
 	},
 	host: 'localhost:8080',
 	schemes: ['http'],
+	definitions: {
+		Contact: {
+			$firstName: 'John',
+			$lastName: 'Doe',
+			$email: 'john.doe@example.com',
+			favoriteColor: 'blue',
+			birthday: '12/25/90',
+		},
+		ContactArray: [{$ref: '#/definitions/Contact'}],
+	},
 };
 
 const outputFile = './swagger.json';
