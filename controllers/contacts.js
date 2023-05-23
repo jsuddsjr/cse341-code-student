@@ -1,12 +1,14 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
+const Contact = require('../models/contacts');
 
 const getAll = async (req, res) => {
-  const result = await mongodb.getDb().db().collection('contacts').find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  });
+  try {
+    const result = await Contact.find();
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
 
 const getSingle = async (req, res) => {

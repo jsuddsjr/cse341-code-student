@@ -1,11 +1,11 @@
 {
-  "name": "REST-practice",
+  "name": "rest-practice",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "set DEBUG=express:* & nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
@@ -15,10 +15,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "debug": "^4.3.4",
     "dotenv": "^16.0.0",
     "express": "^4.16.3",
     "mongodb": "^4.4.0",
-    "swagger-ui-express": "^4.3.0"
+    "mongoose": "^7.2.0",
+    "swagger-ui-express": "^4.3.0",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
